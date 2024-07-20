@@ -1,0 +1,104 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Beethoven Symphonie Nr. 9",
+      "date": "2024-07-20",
+      "time": "19:00",
+      "category": "Klassik",
+      "description": "Erleben Sie Beethovens Meisterwerk in einer atemberaubenden Aufführung.",
+      "location": "Großer Saal",
+      "price": 50.00
+    },
+    {
+      "id": 2,
+      "title": "Jazz Nacht",
+      "date": "2024-07-21",
+      "time": "20:00",
+      "category": "Jazz",
+      "description": "Eine unvergessliche Nacht mit den besten Jazzmusikern der Stadt.",
+      "location": "Kleiner Saal",
+      "price": 30.00
+    },
+    {
+      "id": 3,
+      "title": "Rock Konzert",
+      "date": "2024-07-22",
+      "time": "21:00",
+      "category": "Rock",
+      "description": "Rocken Sie mit bei einem explosiven Konzert mit bekannten Rockbands.",
+      "location": "Open-Air Bühne",
+      "price": 45.00
+    },
+    {
+      "id": 4,
+      "title": "Pop Festival",
+      "date": "2024-07-23",
+      "time": "18:00",
+      "category": "Pop",
+      "description": "Ein Tag voller Popmusik mit Auftritten von Top-Künstlern.",
+      "location": "Open-Air Bühne",
+      "price": 55.00
+    },
+    {
+      "id": 5,
+      "title": "Kammermusik Abend",
+      "date": "2024-07-24",
+      "time": "19:30",
+      "category": "Klassik",
+      "description": "Genießen Sie die feinen Klänge der Kammermusik in einer intimen Atmosphäre.",
+      "location": "Kleiner Saal",
+      "price": 40.00
+    },
+    {
+      "id": 6,
+      "title": "Blues Night",
+      "date": "2024-07-25",
+      "time": "20:00",
+      "category": "Blues",
+      "description": "Tauchen Sie ein in die Welt des Blues mit herausragenden Musikern.",
+      "location": "Kleiner Saal",
+      "price": 35.00
+    },
+    {
+      "id": 7,
+      "title": "Hip-Hop Jam",
+      "date": "2024-07-26",
+      "time": "22:00",
+      "category": "Hip-Hop",
+      "description": "Ein energischer Abend mit den besten Hip-Hop-Künstlern.",
+      "location": "Großer Saal",
+      "price": 40.00
+    },
+    {
+      "id": 8,
+      "title": "Elektronische Nacht",
+      "date": "2024-07-27",
+      "time": "23:00",
+      "category": "Elektronisch",
+      "description": "Erleben Sie die pulsierenden Beats der elektronischen Musik.",
+      "location": "Club",
+      "price": 25.00
+    },
+    {
+      "id": 9,
+      "title": "Reggae Sommer",
+      "date": "2024-07-28",
+      "time": "17:00",
+      "category": "Reggae",
+      "description": "Ein entspannter Abend mit den besten Reggae-Bands.",
+      "location": "Open-Air Bühne",
+      "price": 30.00
+    },
+    {
+      "id": 10,
+      "title": "Acoustic Session",
+      "date": "2024-07-29",
+      "time": "19:00",
+      "category": "Akustik",
+      "description": "Intime Akustik-Performances in gemütlicher Atmosphäre.",
+      "location": "Kleiner Saal",
+      "price": 20.00
+    }
+  ]
+}
