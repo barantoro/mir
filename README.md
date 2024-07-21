@@ -15,16 +15,9 @@ A event listing application built using Nuxt.js 3 and Vue 3 Composition API. The
     -   [CustomSelectbox](#custom-selectbox)
     -   [EventFilter](#event-filter)
     -   [EventList](#event-list)
+-   [Store](#store)
 -   [Accessibility](#accessibility)
 -   [Unit Testing](#testing)
-
-<!-- [![Product Screen Shot][product-screenshot]](https://github.com/barantoro/mir.git)
-
-[product-screenshot]: ./screenshot.png -->
-
-<!-- <p align="center">
-  <img src="./screenshot.png" alt="Application Overview" width="1000"/>
-</p> -->
 
 ## Overview
 
@@ -125,11 +118,11 @@ The `CustomSelectbox` component is a dropdown menu for selecting options. It sup
 
 ### Props
 
-| Prop         | Type   | Default              | Description                                                       |
-| ------------ | ------ | -------------------- | ----------------------------------------------------------------- |
-| `options`    | Array  | `[]`                 | The color of the button (e.g., `primary`, `secondary`).           |
-| `modelValue` | String | `''`                 | Whether the button is disabled.                                   |
-| `label`      | String | `'Select an option'` | The variant of the button (`outlined`, `tonal`, `text`, `plain`). |
+| Prop         | Type   | Default              | Description                                                              |
+| ------------ | ------ | -------------------- | ------------------------------------------------------------------------ |
+| `options`    | Array  | `[]`                 | An array of items to populate the select options. This prop is required. |
+| `modelValue` | String | `''`                 | The currently selected value. This is used for two-way data binding.     |
+| `label`      | String | `'Select an option'` | The placeholder text displayed when no option is selected.               |
 
 ### Events
 
@@ -238,6 +231,46 @@ const events = ref([
 		price: 15,
 	},
 ]);
+</script>
+```
+
+## Store
+
+This `Pinia` store manages the state for events, categories, and locations, and provides an action to fetch event data.
+
+### State
+
+| State        | Type  | Description        |
+| ------------ | ----- | ------------------ |
+| `events`     | Array | Event objects.     |
+| `categories` | Array | Unique categories. |
+| `locations`  | Array | Unique locations.  |
+
+### Actions
+
+| Event         | Description                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------------- |
+| `fetchEvents` | Fetches event data from an external source, populates `events`, and extracts unique categories and locations. |
+
+### Example Usage
+
+```vue
+<template>
+	<div>
+		<EventList :categories="eventStore.categories" :locations="eventStore.locations" @filter="handleFilter" />
+		<EventFilter :events="eventStore.events" />
+	</div>
+</template>
+
+<script setup>
+import { onMounted } from "vue";
+import { useEventStore } from "./stores/eventStore";
+
+const eventStore = useEventStore();
+
+onMounted(() => {
+	eventStore.fetchEvents();
+});
 </script>
 ```
 
