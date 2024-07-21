@@ -37,7 +37,7 @@ describe('Event Store', () => {
     });
 
     it('should handle fetch errors', async () => {
-        global.fetch.mockRejectedValueOnce(new Error('Fetch error'));
+        global.fetch.mockRejectedValueOnce(new Error('Oops, we broke it on purpose 🛠️'));
 
         const store = useEventStore();
         await store.fetchEvents();

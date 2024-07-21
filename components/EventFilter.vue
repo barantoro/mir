@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { ref, defineEmits, watch } from 'vue';
+import { ref, watch } from 'vue';
 import CustomSelectbox from './CustomSelectbox.vue';
 
 defineProps(['categories', 'locations']);
