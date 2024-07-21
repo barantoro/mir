@@ -8,11 +8,13 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "vitest"
+    "test": "vitest",
+    "deploy": "gh-pages --dotfiles -d .output/public"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@vue/test-utils": "^2.4.6",
+    "gh-pages": "^6.1.1",
     "nuxt": "^3.12.3",
     "pinia": "^2.1.7",
     "vue": "latest"
@@ -22,7 +24,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
-    "jsdom": "^24.1.0",
+    "happy-dom": "^14.12.3",
     "vitest": "^2.0.3"
   }
 }
