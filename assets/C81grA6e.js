@@ -1,1 +1,0 @@
-import{_ as l,v as n,x as e,W as o,t as s}from"./DGsAKaQc.js";const a={},r=e("header",null,null,-1),c=e("footer",null,null,-1);function _(t,d){return s(),n("div",null,[r,e("main",null,[o(t.$slots,"default")]),c])}const f=l(a,[["render",_]]);export{f as default};
