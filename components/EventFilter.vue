@@ -47,6 +47,5 @@ select {
     border-bottom: 1px solid;
     padding: 6px 12px;
     outline: none !important;
-
 }
 </style>

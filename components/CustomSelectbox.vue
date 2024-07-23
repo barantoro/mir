@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
     options: {
@@ -121,32 +121,17 @@ onUnmounted(() => {
 });
 </script>
 
-<style scoped>
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.3s ease-in;
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(0px);
-  opacity: 0;
-}
+<style lang="scss" scoped>
 .custom-select {
-    width: 170px;
-    font-family: Arial, sans-serif;
-}
+  width: 170px;
 
-.custom-select:focus-visible   {
-    border: 1px solid #36454F;
+  &:focus-visible {
+    border: 1px solid $highlight-color;
     border-bottom: none;
     outline: none;
-}
+  }
 
-.select-selected {
+  .select-selected {
     padding: 6px 12px;
     cursor: pointer;
     display: flex;
@@ -154,73 +139,89 @@ onUnmounted(() => {
     align-items: center;
     border-bottom: 1px solid;
     font-size: 18px;
-}
+  }
 
-.arrow {
+  .arrow {
     display: flex;
-    transition: transform 0.3s ease;
-}
+    transition: transform $transition-duration ease;
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
 
-.arrow.open {
-    transform: rotate(180deg);
-}
-
-.select-items {
+  .select-items {
     position: absolute;
-    background-color: #fff;
-    box-shadow: 0px 4px 16px 2px rgba(0, 0, 0, .2);
-    /* border: 1px solid #ccc;
-    border-radius: 4px; */
+    background-color: $secondary-color;
+    box-shadow: $box-shadow;
     margin-top: 1px;
     z-index: 99999;
     width: 100%;
     max-width: 450px;
     font-size: 18px;
-}
 
-.select-item {
-    padding: 18px;
-    cursor: pointer;
-    transition: .5s;
-}
+    .select-item {
+      padding: 18px;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover,
+      &:focus {
+        background-color: #ddd;
+        transition: 0.5s;
+      }
+    }
+  }
 
-.select-item:hover,
-.select-item:focus {
-    background-color: #ddd;
-    transition: .5s;
+  @include respond-to('mobile') {
+    width: 130px;
+
+    .select-selected {
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+
+    .select-items {
+      width: 100%;
+      max-width: 100%;
+      bottom: 0;
+      left: 0;
+      font-size: 14px;
+      position: fixed;
+      padding: 12px 4px;
+
+      .select-item {
+        padding: 8px;
+      }
+    }
+  }
 }
 
 .backdrop {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .2);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
 }
-@media (max-width: 576px) {
-    .select-items {
-        width: 100%;
-        max-width: 100%;
-        bottom: 0;
-        left: 0;
-        font-size: 14px;
-        position: fixed;
-        padding: 12px 4px;
-    }
-    .select-item {
-        padding: 8px;
-    }
-    .select-selected {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
-    .slide-fade-enter-from,
-    .slide-fade-leave-to {
-        transform: translateY(200px);
-    }
-    .custom-select {
-        width: 130px;
-    }
+
+.slide-fade-enter-active {
+  transition: all $transition-duration ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all $transition-duration ease-in;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(0px);
+  opacity: 0;
+}
+
+@include respond-to('mobile') {
+  .slide-fade-enter-from,
+  .slide-fade-leave-to {
+    transform: translateY(200px);
+  }
 }
 </style>

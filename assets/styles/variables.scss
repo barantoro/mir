@@ -1,0 +1,14 @@
+$primary-color: #000;
+$secondary-color: #fff;
+$highlight-color: #36454F;
+$transition-duration: 0.3s;
+$box-shadow: 0px 4px 16px 2px rgba(0, 0, 0, 0.2);
+
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'mobile' {
+    @media (max-width: 576px) {
+      @content;
+    }
+  }
+}

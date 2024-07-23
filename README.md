@@ -15,6 +15,7 @@ A event listing application built using Nuxt.js 3 and Vue 3 Composition API. The
     -   [CustomSelectbox](#custom-selectbox)
     -   [EventFilter](#event-filter)
     -   [EventList](#event-list)
+    -   [EventItem](#event-item)
 -   [Store](#store)
 -   [Accessibility](#accessibility)
 -   [Unit Testing](#testing)
@@ -192,12 +193,6 @@ The `EventList` component displays a list of events. If no events are available,
 | -------- | ----- | ------- | ------------------------------------- |
 | `events` | Array | `[]`    | An array of event objects to display. |
 
-### Events
-
-| Event    | Description                                                                                                       |
-| -------- | ----------------------------------------------------------------------------------------------------------------- |
-| `filter` | Emitted when the selected category or location changes. Contains an object with category and location properties. |
-
 ### Example Usage
 
 ```vue
@@ -231,6 +226,50 @@ const events = ref([
 		price: 15,
 	},
 ]);
+</script>
+```
+
+### Event Item
+
+The `EventItem` component displays details of a single event, including its date, time, category, title, description, location, and price. It also provides a button to buy a ticket for the event. When the button is clicked, it emits a buy-ticket event with the event details.
+
+### Props
+
+| Prop    | Type   | Default | Description                                                                                                                                                |
+| ------- | ------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `event` | Object | `{}`    | An object containing event details. It must include the following properties: `date`, `time`, `category`, `title`, `description`, `location`, and `price`. |
+| `index` | Number | `0`     | The index of the event in a list of events, used for accessibility.                                                                                        |
+
+### Events
+
+| Event       | Payload | Description                                                                                                    |
+| ----------- | ------- | -------------------------------------------------------------------------------------------------------------- |
+| `buyTicket` | `event` | Emitted when the "Buy Ticket" button is clicked. The payload is the event object containing the event details. |
+
+### Example Usage
+
+```vue
+<template>
+	<event-item :event="event" :index="0" @buy-ticket="handleBuyTicket" />
+</template>
+
+<script setup>
+import { ref } from "vue";
+import EventItem from "./EventItem.vue";
+
+const event = ref({
+	date: "2024-08-15",
+	time: "20:00",
+	category: "Music",
+	title: "Concert in the Park",
+	description: "An outdoor concert featuring local bands.",
+	location: "Central Park",
+	price: 20,
+});
+
+const handleBuyTicket = (event) => {
+	alert(`Ticket bought for: ${event.title}`);
+};
 </script>
 ```
 
