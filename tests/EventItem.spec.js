@@ -48,7 +48,7 @@ describe('EventItem.vue', () => {
             props: { event }
         });
         const instance = wrapper.vm;
-        const formattedTime = instance.convertTo12HourFormat('14:30');
+        const formattedTime = instance.convertTo12HourFormat('2024-08-15', '14:30');
         expect(formattedTime).toBe('2:30 pm');
     });
 
