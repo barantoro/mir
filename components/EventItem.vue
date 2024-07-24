@@ -2,7 +2,7 @@
     <div class="single-event" v-if="event">
         <div class="date">
                 <span v-html="formatDate(event.date)" aria-label="Event date"></span>
-                <strong class="time" aria-label="Event time">{{ convertTo12HourFormat(event.time) }}</strong>
+                <strong class="time" aria-label="Event time">{{ convertTo12HourFormat(event.date, event.time) }}</strong>
         </div>
         <div class="event">
             <span class="type-badge" aria-label="Event category">
@@ -23,6 +23,8 @@
 </template>
 
 <script setup>
+import dayjs from 'dayjs'
+
 const emit = defineEmits(['buy-ticket']);
 
 const props = defineProps({
@@ -41,35 +43,16 @@ const buyTicket = () => {
     emit('buy-ticket', props.event);
 }
 
-const convertTo12HourFormat = (time24) => {
-    let [hours, minutes] = time24.split(':').map(Number);
+const convertTo12HourFormat = (date, time) => {
+    const dateTime = dayjs(`${date} ${time}`, 'YYYY-MM-DD HH:mm');
+    const formattedTime = dateTime.format('h:mm a');
 
-    let period = hours >= 12 ? 'pm' : 'am';
-
-    hours = hours % 12;
-    hours = hours ? hours : 12; //
-
-    return `${hours}${minutes > 0 ? ':' + minutes.toString().padStart(2, '0') : ''} ${period}`;
+    return formattedTime.replace(/:00 /, ' ');
 }
 
 const formatDate = (inputDate) => {
-    const [year, month, day] = inputDate.split('-').map(Number);
-
-    const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
-
-    const days = [
-        "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
-    ];
-
-    const date = new Date(year, month - 1, day);
-    const dayName = days[date.getDay()];
-
-    const monthName = months[month - 1];
-
-    return `<strong>${dayName}</strong>, ${day}. ${monthName} ${year}`;
+    const date = dayjs(inputDate);
+    return `<strong>${date.format('ddd')}</strong>, ${date.format('D')}. ${date.format('MMMM')} ${date.format('YYYY')}`;
 }
 </script>
 
